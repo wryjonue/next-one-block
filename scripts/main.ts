@@ -12,7 +12,8 @@ const EX_LIST: string[] = [
 	"minecraftend_portal_frame",
 	"minecraft:structure_void",
 	"minecraft:structure_block",
-	"minecraft:air"
+	"minecraft:air",
+	
 ];
 const EX_LIST_INC: string[] = [
 	"light_block",
@@ -21,7 +22,7 @@ const EX_LIST_INC: string[] = [
 ];
 function main() {
 	const leZero: Block | undefined = overworld.getBlock({x:0,y:0,z:0});
-	if (!leZero) {
+	if (!leZero || leZero.typeId == "minecraft:air") {
 		while (true) {
 			const blockType: BlockType = blockTypes[random(blockTypes.length)];
 			if (EX_LIST.includes(blockType.id)) continue;
