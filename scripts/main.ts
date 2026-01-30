@@ -5,20 +5,41 @@ let blockTypes: BlockType[];
 const EX_LIST: string[] = [
 	"minecraft:bedrock",
 	"minecraft:barrier",
+	"minecraft:border_block",
 	"minecraft:allow",
 	"minecraft:deny",
 	"minecraft:portal",
 	"minecraft:end_portal",
-	"minecraftend_portal_frame",
+	"minecraft:end_portal_frame",
 	"minecraft:structure_void",
 	"minecraft:structure_block",
+	"minecraft:resin_clump",
 	"minecraft:air",
-	
+	"minecraft:lab_table",
+	"minecraft:material_reducer",
+	"minecraft:piston_arm_collision",
+	"minecraft:sticky_piston_arm_collision",
+	"minecraft:sculk_vein",
+	"minecraft:vault",
+	"minecraft:jigsaw",
+	"minecraft:client_request_placeholder_block",
+	"minecraft:chemical_heat",
+	"minecraft:camera",
+	"minecraft:compound_creator",
+	"minecraft:deprecated_purpur_block_2",
+	"minecraft:unknown",
+	"minecraft:end_gateway_portal"
 ];
 const EX_LIST_INC: string[] = [
 	"light_block",
 	"element_",
-	"command_block"
+	"command_block",
+	"invisible",
+	"minecraft:hard_",
+	"minecraft:reserved",
+	"_door",
+	"colored_torch",
+	"info_update",
 ];
 function main() {
 	const leZero: Block | undefined = overworld.getBlock({x:0,y:0,z:0});
@@ -29,6 +50,7 @@ function main() {
 			if (EX_LIST_INC.some(p => blockType.id.includes(p))) continue;
 			try {
 				overworld.setBlockType({x:0,y:0,z:0},blockType);
+				console.log(blockType.id);
 			} catch (err) {
 				console.log("Unable to place the block.");
 			}
